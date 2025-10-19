@@ -34,6 +34,9 @@ const GameBoard: React.FC = () => {
   const [flipped, setFlipped] = useState<CardType[]>([]);
 
   const handleCardClick = (clickedCard: CardType) => {
+    console.log("Clicked card:", clickedCard); // 👈 shows which card you clicked
+    console.log("Flipped cards before click:", flipped); // 👈 shows what’s flipped before
+
     if (clickedCard.isFlipped || clickedCard.isMatched || flipped.length === 2)
       return;
 
@@ -41,8 +44,12 @@ const GameBoard: React.FC = () => {
       card.id === clickedCard.id ? { ...card, isFlipped: true } : card
     );
 
+    console.log("Cards after flipping one:", updatedCards); // 👈 shows the updated state
+
     setCards(updatedCards);
     setFlipped([...flipped, clickedCard]);
+
+    console.log("Flipped cards after click:", [...flipped, clickedCard]); // 👈 after click
   };
 
   //useEffect to check for matches
@@ -52,14 +59,18 @@ const GameBoard: React.FC = () => {
   //reset the flipped state
   useEffect(() => {
     if (flipped.length === 2) {
+      console.log("Checking two flipped cards:", flipped); // 👈 shows both flipped
+
       const [first, second] = flipped;
       if (first.value === second.value) {
+        console.log("✅ It's a match!", first.value); // 👈 match found
         setCards((prev) =>
           prev.map((card) =>
             card.value === first.value ? { ...card, isMatched: true } : card
           )
         );
       } else {
+        console.log("❌ Not a match! Flipping back."); // 👈 not a match
         setTimeout(() => {
           setCards((prev) =>
             prev.map((card) =>
