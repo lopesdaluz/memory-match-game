@@ -2,6 +2,16 @@ import React, { useState, useEffect } from "react";
 import Card from "./Card";
 import type { CardType } from "../types/CardTypes";
 
+//the logic & import what each card does and the object of each card
+
+//the function to generate cards
+//random cards for the game
+//each card has id, value, isFlipped and isMatched
+//the cards ar4e shuffled randomly
+//2 of each card
+//the values are emojis of animals
+//return the array of cards
+
 const generateCards = (): CardType[] => {
   const values = ["🐶", "🐱", "🐰", "🦊", "🐻", "🐸"];
   const cards = values
@@ -13,6 +23,11 @@ const generateCards = (): CardType[] => {
 
   return cards;
 };
+
+//the hanleCarClick funtion
+//if its clicked and its flipped or matched or 2 cards are flipped return
+//update the card when the card is clicked
+//set the cards and flipped state
 
 const GameBoard: React.FC = () => {
   const [cards, setCards] = useState<CardType[]>(generateCards());
@@ -30,6 +45,11 @@ const GameBoard: React.FC = () => {
     setFlipped([...flipped, clickedCard]);
   };
 
+  //useEffect to check for matches
+  //if 2 cards are flipped check if they match
+  //if they match set isMatched to true
+  //if not flip them back after 1 second
+  //reset the flipped state
   useEffect(() => {
     if (flipped.length === 2) {
       const [first, second] = flipped;
@@ -52,6 +72,11 @@ const GameBoard: React.FC = () => {
     }
   }, [flipped]);
 
+  //handleRestart function to restart the game
+  //generate new cards and reset flipped state
+  //called when restart button is clicked
+  //reset the game
+  //set new cards and reset flipped state
   const handleRestart = () => {
     setCards(generateCards());
     setFlipped([]);
