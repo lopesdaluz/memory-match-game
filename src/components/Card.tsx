@@ -9,17 +9,17 @@ type Props = {
 const Card: React.FC<Props> = ({ card, onClick }) => {
   return (
     <div
-      className={`w-24 h-32 md:w-28 md:h-36 flex items-center justify-center text-4xl font-bold rounded-xl shadow-lg cursor-pointer
-                  ${
-                    card.isFlipped || card.isMatched
-                      ? "bg-white text-gray-900"
-                      : "bg-gray-700 text-white"
-                  }
-                  transition-transform duration-300 transform hover:scale-105`}
+      className={`w-32 h-40 md:w-36 md:h-48 flex items-center justify-center border-2 border-gray-300 rounded-xl cursor-pointer 
+        ${
+          card.isFlipped || card.isMatched
+            ? "bg-white "
+            : "bg-gray-700 text-gray-700"
+        }
+      `}
       onClick={() => onClick(card)}
+      style={{ fontSize: "2rem" }}
     >
-      {/* Show emoji if flipped or matched, otherwise show question mark */}
-      {card.isFlipped || card.isMatched ? card.value : "❓"}
+      {card.isFlipped || card.isMatched ? card.value : "?"}
     </div>
   );
 };

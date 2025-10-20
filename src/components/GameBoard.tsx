@@ -13,7 +13,105 @@ import type { CardType } from "../types/CardTypes";
 //return the array of cards
 
 const generateCards = (): CardType[] => {
-  const values = ["🐶", "🐱", "🐰", "🦊", "🐻", "🐸"];
+  const values = [
+    "🐶",
+    "🐱",
+    "🐰",
+    "🦊",
+    "🐻",
+    "🐸",
+    "🦁",
+    "🐼",
+    "🐨",
+    "🐯",
+    "🦄",
+    "🐷",
+    "🐵",
+    "🐔",
+    "🐧",
+    "🐦",
+    "🐤",
+    "🐣",
+    "🦉",
+    "🦅",
+    "🦆",
+    "🦢",
+    "🦜",
+    "🦚",
+    "🍎",
+    "🍌",
+    "🍇",
+    "🍉",
+    "🍓",
+    "🍒",
+    "🥝",
+    "🍍",
+    "🥑",
+    "🥕",
+    "🌽",
+    "🥦",
+    "⚽",
+    "🏀",
+    "🏈",
+    "⚾",
+    "🎾",
+    "🏐",
+    "🏉",
+    "🎱",
+    "🏓",
+    "🏸",
+    "🥅",
+    "🏒",
+    "🚗",
+    "🚕",
+    "🚙",
+    "🚌",
+    "🚎",
+    "🏎️",
+    "🚓",
+    "🚑",
+    "🚒",
+    "🚐",
+    "🛻",
+    "🚚",
+    "🌞",
+    "🌝",
+    "🌛",
+    "⭐",
+    "🌟",
+    "⚡",
+    "🔥",
+    "💧",
+    "🌈",
+    "☂️",
+    "❄️",
+    "💨",
+    "🎵",
+    "🎶",
+    "🎸",
+    "🎹",
+    "🥁",
+    "🎻",
+    "🎷",
+    "🎺",
+    "📯",
+    "🎤",
+    "🎧",
+    "🎼",
+    "💎",
+    "🔑",
+    "🔒",
+    "🪄",
+    "💰",
+    "🏆",
+    "🎁",
+    "📦",
+    "🧩",
+    "🪀",
+    "🪁",
+    "🎯",
+  ];
+
   const cards = values
     .flatMap((value) => [
       { id: Math.random(), value, isFlipped: false, isMatched: false },
@@ -94,11 +192,10 @@ const GameBoard: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-grey-900 p-4">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-900 p-4">
       <h1 className="text-4xl font-bold text-white mb-8">🐾 Memory Match</h1>
 
-      {/* Card grid */}
-      <div className="grid grid-cols-3 sm:grid-cols-4 gap-6 ">
+      <div className="grid grid-cols-30 gap-4 justify-center">
         {cards.map((card) => (
           <Card key={card.id} card={card} onClick={handleCardClick} />
         ))}
